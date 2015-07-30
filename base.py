@@ -2,7 +2,6 @@ from urlparse import urljoin
 
 import requests
 from decouple import config
-from nose.tools import eq_
 
 
 BASE_URL = config('MOZORG_URL', 'https://www.mozilla.org')
@@ -18,6 +17,6 @@ def assert_response(url, status_code=200, location=None):
     full_url = urljoin(BASE_URL, url)
     print 'Test URL:', full_url
     resp = requests.head(full_url, allow_redirects=True)
-    eq_(resp.status_code, status_code)
+    assert resp.status_code == status_code
     if location:
-        eq_(resp.url, location)
+        assert resp.url == location
