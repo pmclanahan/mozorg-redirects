@@ -12,4 +12,4 @@ def test_410s():
 
 def test_301s():
     for url, dest in URLS_301_MAP:
-        yield assert_response, url, 301, dest
+        yield assert_response, url, 200, dest

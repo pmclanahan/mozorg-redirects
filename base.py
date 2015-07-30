@@ -20,4 +20,4 @@ def assert_response(url, status_code=200, location=None):
     resp = requests.head(full_url, allow_redirects=True)
     eq_(resp.status_code, status_code)
     if location:
-        eq_(resp['location'], location)
+        eq_(resp.url, location)
